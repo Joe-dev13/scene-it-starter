@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                     <div class="card-body">
                     <h5 id="title">${currentMovie.Title}</h5>
                     <h5 id="date">${currentMovie.Year}</h5>
-                    <a href="#" class="btn btn-primary">Add</a>
+                    <a id="button" href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
             </div>`
@@ -21,6 +21,22 @@ document.addEventListener('DOMContentLoaded' , () => {
             let movieContainer = document.getElementById('movie-container');
             movieContainer.innerHTML = renderMovies(movieData);
     });
+        document.getElementById('button').addEventListener('click', () => {
+            let saveToWatchList = () => {
+                let movie = movieData.find(currentMovie => {
+                    let watchlistJSON = localStorage.getItem('watchlist');
+                    let watchlist = JSON.parse(watchlistJSON);
+                    if(watchlist === null){
+                        watchlist = []
+                    };
+                    watchlist.push(movie);
+                    watchlistJSON = JSON.stringify(watchlist);
+                    localStorage.setItem('watchlist', watchlistJSON);
+                    return currentMovie.imdbID == imdbID;
+                });
+            };
+            saveToWatchList(`${imdbID}`);
+        });
 });
 
 

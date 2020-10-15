@@ -14,3 +14,17 @@ body {
 	margin-top: 20px;
 }
 
+#title {
+	text-align: center;
+}
+
+#date {
+	text-align: center;
+}
+
+#movie-container{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}

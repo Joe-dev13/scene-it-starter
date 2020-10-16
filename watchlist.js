@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded' , () => {
+    let movies = JSON.parse(localStorage.getItem('watchlist'));
     let renderMovies = movieArray => {
         let movieHTML = movieArray.map(currentMovie => {
             return ( 
@@ -16,23 +17,6 @@ document.addEventListener('DOMContentLoaded' , () => {
         });
         return movieHTML.join('')
     };
-        document.getElementById('search-form').addEventListener('submit', function(e){
-            e.preventDefault();
             let movieContainer = document.getElementById('movie-container');
-            movieContainer.innerHTML = renderMovies(movieData);
-    });
+            movieContainer.innerHTML = renderMovies(movies);
 });
-const saveToWatchList = imdbID => {
-    let movie = movieData.find(currentMovie => {
-        return currentMovie.imdbID == imdbID;
-    });
-    let watchlistJSON = localStorage.getItem('watchlist');
-    let watchlist = JSON.parse(watchlistJSON);
-    if(watchlist == null){
-        watchlist = []
-    };
-    watchlist.push(movie);
-    watchlistJSON = JSON.stringify(watchlist);
-    localStorage.setItem('watchlist', watchlistJSON);
-};
-

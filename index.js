@@ -18,8 +18,14 @@ document.addEventListener('DOMContentLoaded' , () => {
     };
         document.getElementById('search-form').addEventListener('submit', function(e){
             e.preventDefault();
+            let searchString = document.querySelector('.search-bar').value;
+            console.log(searchString);
+            let urlEncodedSearchString = encodeURIComponent(searchString)
+            axios.get("http://www.omdbapi.com/?apikey=8b802142&s=" + urlEncodedSearchString).then(response => {
+            console.log(response);
             let movieContainer = document.getElementById('movie-container');
-            movieContainer.innerHTML = renderMovies(movieData);
+            movieContainer.innerHTML = renderMovies(response.data.Search);
+            })
     });
 });
 const saveToWatchList = imdbID => {

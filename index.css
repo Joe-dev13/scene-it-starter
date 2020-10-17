@@ -1,13 +1,18 @@
 body {
 	background-color: #B2E9FD;
+	background: url(https://images-na.ssl-images-amazon.com/images/I/61T8YzXzPlL._AC_SY355_.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .header h2 {
-	color: #DC4247;
+	color: turquoise;
 }
 
 .header p {
-	color: #50524F;
+	color: gold;
 }
 
 .results {

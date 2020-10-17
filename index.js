@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded' , () => {
             console.log(searchString);
             let urlEncodedSearchString = encodeURIComponent(searchString)
             axios.get("http://www.omdbapi.com/?apikey=8b802142&s=" + urlEncodedSearchString).then(response => {
-            console.log(response);
+                console.log(response);
             let movieContainer = document.getElementById('movie-container');
             movieContainer.innerHTML = renderMovies(response.data.Search);
             })
